@@ -1,7 +1,7 @@
-
+import type { Options } from '@wdio/types'
 import { config as baseConfig } from './wdio.appium.conf'
 
-export const config: WebdriverIO.Config = {
+export const config: Options.Testrunner = {
     ...baseConfig,
     capabilities: [
         {
@@ -9,7 +9,8 @@ export const config: WebdriverIO.Config = {
             'appium:deviceName': 'iPhone 15 Pro',
             'appium:platformVersion': '17.0',
             'appium:automationName': 'XCUITest',
-            'appium:app': './apps/wdio-ios.zip'
-        }
+            'appium:app': './apps/wikipedia.zip',
+            'appium:noReset': true
+        },
     ]
 }
