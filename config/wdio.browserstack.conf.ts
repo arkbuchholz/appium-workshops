@@ -11,7 +11,7 @@ export const config = {
     [
       'browserstack',
       {
-        app: './apps/wikipedia.apk',
+        app: '../apps/wikipedia.apk',
         buildIdentifier: '#${DATE_TIME} #${BUILD_NUMBER}',
       },
     ],
