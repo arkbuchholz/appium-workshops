@@ -18,4 +18,4 @@ jobs:
         run: npm run bstack
         env:
           BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
-          BROWSERSTACK_PASSWORD: ${{ secrets.BROWSERSTACK_PASSWORD }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
