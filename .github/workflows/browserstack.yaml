@@ -16,3 +16,6 @@ jobs:
         run: npm ci
       - name: Run tests on BrowserStack
         run: npm run bstack
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_PASSWORD: ${{ secrets.BROWSERSTACK_PASSWORD }}

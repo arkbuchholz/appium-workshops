@@ -5,3 +5,5 @@ apps
 .DS_Store
 
 logs
+
+.env
