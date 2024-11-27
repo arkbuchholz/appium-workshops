@@ -3,7 +3,7 @@ import Home from '../support/screens/Home/Home.assertion';
 
 describe('Onboarding', () => {
   it('Should complete onboarding', async () => {
-    // await Onboarding.complete();
+    // test await Onboarding.complete();
     await Home.assert();
   });
 });
