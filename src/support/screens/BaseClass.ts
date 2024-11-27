@@ -1,12 +1,26 @@
 export class BaseClass {
-    constructor() { }
-    getPlatformSelector(selectorIOS: ChainablePromiseElement, selectorAndroid: ChainablePromiseElement) {
-        return driver.isAndroid ? selectorAndroid : selectorIOS
-    }
+  constructor() {}
+  getPlatformSelector(selectorIOS: string, selectorAndroid: string) {
+    return driver.isAndroid ? selectorAndroid : selectorIOS;
+  }
 
-    getSelector(iOSpredicate: string,  androidPredicate: string, method = 'resourceId') {
-        const selectorIOS = $(`~${iOSpredicate}`)
-        const selectorAndroid = $(`android=new UiSelector().${method}("${androidPredicate}")`)
-        return this.getPlatformSelector(selectorIOS, selectorAndroid)
-    }
+  getSelector(
+    IOSpredicate: string,
+    androidPredicate: string,
+    method = "resourceId"
+  ) {
+    const selectorIOS = `~${IOSpredicate}`;
+    const selectorAndroid = `android=new UiSelector().${method}("${androidPredicate}")`;
+    return $(this.getPlatformSelector(selectorIOS, selectorAndroid));
+  }
+
+  getPredicateSelector(
+    IOSpredicate: string,
+    androidPredicate: string,
+    method = "text"
+  ) {
+    const selectorIOS = `-ios predicate string:${IOSpredicate}`;
+    const selectorAndroid = `android=new UiSelector().${method}("${androidPredicate}")`;
+    return $(this.getPlatformSelector(selectorIOS, selectorAndroid));
+  }
 }

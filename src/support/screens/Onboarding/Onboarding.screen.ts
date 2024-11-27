@@ -9,3 +9,4 @@ class OnboardingScreen extends OnboardingSelectors {
   }
 }
 export default new OnboardingScreen();
+
