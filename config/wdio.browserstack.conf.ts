@@ -1,7 +1,4 @@
 import { config as baseConfig } from './wdio.shared.conf';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 export const config = {
   ...baseConfig,
