@@ -1,4 +1,4 @@
-import { HomeScreen } from "./Home.screen";
+import { HomeScreen } from './Home.screen';
 
 class HomeAssertion extends HomeScreen {
   async assert() {
