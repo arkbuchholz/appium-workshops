@@ -13,7 +13,7 @@ config.services = [
   [
     'browserstack',
     {
-      app: `./apps/wikipedia.${platform === ANDROID ? 'apk' : 'ipa'}`,
+      app: process.env.BS_APP_ID || '',
       buildIdentifier: '#${DATE_TIME} #${BUILD_NUMBER}',
     },
   ],
