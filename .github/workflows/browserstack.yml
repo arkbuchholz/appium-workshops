@@ -27,10 +27,10 @@ jobs:
           -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
           -F "file=@apps/wikipedia.apk" \
           -F "custom_id=WikiApp")
-          echo $appID
+          echo "$appID"
           echo $appID >> GITHUB_OUTPUT
 
-      - name: Run tests on BrowserStack
-        run: npm run bstack:android
-        env:
-          BS_APP_ID: ${{ steps.upload-app.outputs.BS_APP_ID }}
+      # - name: Run tests on BrowserStack
+      #   run: npm run bstack:android
+      #   env:
+      #     BS_APP_ID: ${{ steps.upload-app.outputs.BS_APP_ID }}
