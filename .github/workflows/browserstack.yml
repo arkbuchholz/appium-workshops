@@ -30,6 +30,6 @@ jobs:
           echo "BS_APP_ID=$appID" >> GITHUB_ENV
 
       - name: Run tests on BrowserStack
-        run: echo $BS_APP_ID
+        run: npm run bstack:android
         env:
           BS_APP_ID: ${{ env.BS_APP_ID }}
