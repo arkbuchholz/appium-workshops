@@ -25,7 +25,8 @@ jobs:
         run: |
           res=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
           -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
-          -F "file=@apps/wikipedia.apk" | sed -n 's|.*"app_url": *"\([^"]*\)".*|\1|p'))
+          -F "file=@apps/wikipedia.apk" | sed -n 's|.*"app_url": *"\([^"]*\)".*|\1|p' \
+          -F "custom_id=WikiApp")
           echo $BS_APP_ID
           echo $BS_APP_ID=$res >> GITHUB_OUTPUT
 
