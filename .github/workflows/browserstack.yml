@@ -27,9 +27,7 @@ jobs:
           -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
           -F "file=@apps/wikipedia.apk" \
           -F "custom_id=WikiApp")
-          BS_APP_ID=$(jq -r ".app_url" <<<$res)
-          echo $BS_APP_ID
-          echo $BS_APP_ID=$res >> GITHUB_OUTPUT
+          echo BS_APP_ID=$(jq -r ".app_url" <<<$res) >> GITHUB_OUTPUT
 
       - name: Run tests on BrowserStack
         run: echo $BS_APP_ID
