@@ -27,7 +27,7 @@ jobs:
           -F "file=@apps/wikipedia.apk" \
           -F "custom_id=WikiApp")
           appID=$(jq -r ".app_url" <<<$res)
-          echo "BS_APP_ID=$appID" >> GITHUB_ENV
+          echo "BS_APP_ID=$appID" >> $GITHUB_ENV
 
       - name: Run tests on BrowserStack
         run: npm run bstack:android
