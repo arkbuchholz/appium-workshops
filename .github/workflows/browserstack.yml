@@ -1,0 +1,34 @@
+name: BrowserStack
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  browserstack:
+    runs-on: ubuntu-latest
+    env:
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install packages
+        run: npm ci
+      - name: Upload app to BrowserStack
+        run: |
+          res=$(curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
+          -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
+          -F "file=@apps/wikipedia.apk" \
+          -F "custom_id=WikiApp")
+          echo BS_APP_ID=$(jq -r ".app_url" <<< $res) >> $GITHUB_ENV
+
+      - name: Run tests on BrowserStack
+        run: npm run bstack:android
+        env:
+          BS_APP_ID: ${{ env.BS_APP_ID }}
